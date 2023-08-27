@@ -1,8 +1,6 @@
+import Link from 'next/link';
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -14,9 +12,39 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+  const Header = (
+    <div className='flex flex-col'>
+      <header className='bg-gray-900 mb-8 py-4'>
+        <div className='container mx-auto flex justify-center'>
+          <h1 className='mx-auto text-white'>Matheus Alves Blog</h1>
+          <a className='text-white mx-5'>
+            <Link href='/'>Logo</Link>
+          </a>
+        </div>
+      </header>
+    </div>
+  );
+
+  const Footer = ( 
+      <div className='bg-gray-900 py-4 mt-8'>
+          
+        <div className='container mx-auto flex justify-center'>
+          <p className='text-white'>
+            @copy 2023 Matheus Alves
+          </p>
+        </div> 
+      </div>
+  )
+
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head />
+        <body>
+          {Header}
+          {children}
+          {Footer}
+        </body>
     </html>
   )
 }
